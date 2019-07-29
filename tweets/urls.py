@@ -6,7 +6,8 @@ from .views import (TweetListView,
                     TweetUpdateView,
                     TweetDeleteView
                     )
-
+                    
+app_name = 'tweets'
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path('', TweetListView.as_view(), name='list'),
