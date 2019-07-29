@@ -1,11 +1,28 @@
 from django.shortcuts import render
+from django.views.generic import DetailView, ListView
 from .models import Tweet
 # Create your views here.
 
 #Create, Retrieve, Update, Delete
+class TweetDetailView(DetailView):
+    #template_name = "tweets/detail_view.html"
+    queryset = Tweet.objects.all()
+
+    def get_object(self):
+        return Tweet.objects.get(id=1)
+
+class TweetListView(ListView):
+    #template_name = "tweets/list_view.html"
+    queryset = Tweet.objects.all()
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(TweetListView, self).get_context_data(*args, **kwargs)
+        return context
 
 
-def tweet_detail_view(request, id=1):
+
+
+'''def tweet_detail_view(request, id=1):
     obj = Tweet.objects.get(id=id)
     context = {
         "object" : obj
@@ -21,4 +38,4 @@ def tweet_list_view(request,):
         "object_list" : queryset
     }
 
-    return render(request, "tweets/list_view.html", context)
+    return render(request, "tweets/list_view.html", context)'''
