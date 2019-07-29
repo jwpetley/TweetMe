@@ -3,7 +3,8 @@ from django.urls import path
 from .views import (TweetListView,
                     TweetDetailView,
                     TweetCreateView,
-                    TweetUpdateView
+                    TweetUpdateView,
+                    TweetDeleteView
                     )
 
 urlpatterns = [
@@ -12,4 +13,5 @@ urlpatterns = [
     path('create/', TweetCreateView.as_view(), name='create'),
     path('<pk>/', TweetDetailView.as_view(), name='detail'),
     path('<pk>/update/', TweetUpdateView.as_view(), name = 'update'),
+    path('<pk>/delete/', TweetDeleteView.as_view(), name = 'delete'),
 ]
